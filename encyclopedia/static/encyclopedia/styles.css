@@ -1,0 +1,78 @@
+body {
+    margin-right: 20px;
+    background-color: white;
+    
+}
+
+code {
+    white-space: pre;
+}
+
+h1 {
+    margin-top: 0px;
+    padding-top: 20px;
+}
+
+h2 {
+    margin-top: 20px;
+    padding-top: 20px;   
+}
+
+a {
+    text-decoration: none;
+    color: red;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: blue;
+
+}
+
+.error_text {
+    margin-top: 10%;
+    padding-top: 20px;
+    text-align: center;
+    justify-content: center;
+    font-weight: bolder;
+    font-size: 56px;
+    
+}
+
+textarea {
+    height: 45vh;
+    width: 80%;
+    background-color: hsl(0, 0%, 95%);
+}
+
+
+.main {
+    padding: 40px;
+}
+
+.title {
+    width: 80%;
+    font-size: 15px;
+    line-height: 15px;
+    background-color: hsl(0, 0%, 95%);
+}
+
+.search {
+    width: 100%;
+    font-size: 15px;
+    line-height: 15px;
+}
+
+.sidebar {
+    background-color: #f0f0f0;
+    height: 100vh;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    margin-top: 5px;
+}
+
+.center {
+    text-align: center;
+}

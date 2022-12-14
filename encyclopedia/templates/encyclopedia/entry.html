@@ -1,0 +1,17 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% load encyclopedia_extras %}
+{% block title %}
+    Entry Page
+{% endblock %}
+
+{% block body %} 
+    {{ entry|convert_markdown|safe }}
+    <br>
+    <a href="{% url 'edit' title %}" name ="edit" class="btn btn-dark" role="button">Edit Page</a>   
+{% endblock %}
+
+
+<!-- href='edit/{{ entry1 }}' 
+
+href="{% url 'create_update' title %} -->

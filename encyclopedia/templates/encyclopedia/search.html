@@ -1,0 +1,149 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% load encyclopedia_extras %}
+{% block title %}
+    Entry Page
+{% endblock %}
+
+{% block body %} 
+<h1>Search Pages</h1>
+<ul>
+        
+    {% for m_entry in matched_entry_list %}    
+        <li><a href="{% url 'search' m_entry %}" >{{ m_entry }}</a></li>
+    {% endfor %}
+       
+</ul>
+   
+{% endblock %}
+
+
+
+<!--
+
+1. type query in html search bar
+2. store query in a variable
+3. get entries list
+4. compare query against every single entry in entries list
+5. if query is a substring in entries store the entry in a list
+6. present the entry list one at a time on html page
+7. attach href link to every entry in list. 
+
+def search(request):
+    """Search function"""
+
+#1. type query in html search bar x 
+#2. store query in a variable x
+#3. convert entry to upper
+#3. get entries_list
+#4. convert entry in entires_list to upper
+#4. compare query against every single entry in entries list
+#5. if query is a substring in entries store the entry in a list
+#6. present the matched_entry list one at a time on html page in <li> format
+#7. attach href link to every entry in list. 
+
+    
+    entries = util.list_entries()
+    og_query = request.GET.get('q')
+    u_query = request.GET.get('q').upper()
+    matched_entry_list = []
+    upper_entry_list = []
+    
+    for entry in entries:
+        entry = entry.upper()
+        upper_entry_list.append(entry)
+    print(upper_entry_list)
+    for u_entry in upper_entry_list:
+        print(u_entry)
+        if u_query in u_entry:
+            print(u_query)
+            matched_entry_list.append(u_entry)
+            continue
+        print(matched_entry_list)
+        for m_entry in matched_entry_list:
+            print(m_entry)
+            return render(request,"encyclopedia/search.html", {
+                "matched_entry_list": matched_entry_list
+                })
+    else:
+        return render(request,"encyclopedia/error_page.html", {
+        "message" : "Sorry, This Page Does Not Exist",
+        "create" : "Please Feel To Create One."
+                    })
+
+
+
+    entries = util.list_entries()
+    query = request.GET.get('q')
+    matched_entry_list = []
+    entry_list = []   
+    for entry in entries:
+        
+        entry_list.append(entry)
+    print(entry_list)
+    for u_entry in entry_list:
+        if query in u_entry:
+            matched_entry_list.append(u_entry)
+            continue
+        print(matched_entry_list)
+        for m_entry in matched_entry_list:
+            print(m_entry)
+            return render(request,"encyclopedia/index.html", {
+                "entries": matched_entry_list,
+                })
+    else:
+        return render(request,"encyclopedia/error_page.html", {
+        "message" : "Sorry, This Page Does Not Exist",
+        "create" : "Please Feel To Create One."
+                    })
+search to index
+
+    entries = util.list_entries()
+    query = request.GET.get('q')
+    matched_entry_list = []
+    entry_list = []   
+    for entry in entries:    
+        entry_list.append(entry)
+    for u_entry in entry_list:
+        if query in u_entry:
+            matched_entry_list.append(u_entry)
+            continue
+        for m_entry in matched_entry_list:
+            return render(request,"encyclopedia/index.html", {
+                "entries": matched_entry_list,
+                })
+    
+    else:
+        return render(request,"encyclopedia/error_page.html", {
+        "message" : "Sorry, This Page Does Not Exist",
+        "create" : "Please Feel To Create One."
+                    })
+
+
+
+    entries = util.list_entries()
+    query = request.GET.get('q')
+    matched_entry_list = [] 
+    u_query = query.upper() 
+    for entry in entries:  
+            u_entry = entry.upper()
+            if query == entry or u_query == u_entry:
+                return render(request,"encyclopedia/entry.html", {
+                    "entry": util.get_entry(query),
+                    "title": entry
+                    })
+            elif query in entry or u_query in u_entry:
+                matched_entry_list.append(entry)
+                continue
+            for m_entry in matched_entry_list:
+                return render(request,"encyclopedia/index.html", {
+                    "entries": matched_entry_list,
+                    }) 
+    else:
+        return render(request,"encyclopedia/error_page.html", {
+        "message" : "Sorry, This Page Does Not Exist",
+        "create" : "Please Feel To Create One."
+                    })
+
+
+-->

@@ -1,0 +1,3 @@
+#Annunaki
+
+>The Anunnaki (Sumerian: also transcribed as **Anunaki, Annunaki, Anunna, Ananaki** and other variations) are a group of deities of the ancient __Sumerians, Akkadians, Assyrians and Babylonians.__[1] In the earliest Sumerian writings about them, which come from the Post-Akkadian period, the Anunnaki are deities in the pantheon, descendants of **An** _and_ **Ki,** the _god of the heavens_ and the _goddess of earth_ and their primary function was to decree the fates of humanity.

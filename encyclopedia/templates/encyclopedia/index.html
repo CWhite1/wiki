@@ -1,0 +1,118 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>All Pages</h1>
+
+    <ul>
+        
+        {% for entry in entries %}    
+            <li><a href="{% url 'entry' entry %}" >{{ entry }}</a></li>
+        {% endfor %}
+           
+    </ul>
+
+{% endblock %}
+
+<!-- 1:10 a href="{% url '<str:name>' %}" 
+or if multiple apps
+     a href="{% url 'app_name:index' %}"-->
+
+<!--1:14 form action="{% url 'index' %}" method="post" 
+re: {% csrf_token %} -->
+
+<!-- 00:25  route name -->
+
+<!-- instead of adding task input form do this with django
+{{ form }}-->
+
+<!--urlpatterns = [
+   
+    path("", views.index, name="index"),
+    path("search", views.search, name="search"),
+    path("create", views.create, name="create"),
+    path('<str:entry1>/', views.edit, name="edit"),
+    path('edit1', views.edit1, name="edit1"),
+    path('<str:name>/', views.entry)
+]
+
+
+    def title(request):
+    entries = util.list_entries()
+    find_entries = list()
+    if request.method =="POST":
+        q = request.POST['q']
+        for entry in entries:
+            if entry in entries:
+                find_entries.append(entry)
+                print(f'{find_entries}')
+                return render(request,"encyclopedia/entry.html", {
+                    "titles": util.get_entry(q)
+                })
+            else:
+                print(f'{find_entries}')
+                return HttpResponse("Sorry, this page does Not Exist")
+                
+        fail = util.get_entry(q)
+        if fail == None:
+            return HttpResponse("Sorry, this page does Not Exist")
+        else:          
+            return render(request,"encyclopedia/entry.html", {
+            "titles": util.get_entry(q),
+            "search_result": find_entries,
+            })
+    else:
+        query = request.GET.get('name') 
+        print(query)
+        return render(request,"encyclopedia/entry.html", {
+            "titles": util.get_entry(query),
+            })
+ 
+
+
+    def entry(request, name):
+    return render(request, "encyclopedia/entry.html", {
+        "titles": util.get_entry(name)
+    })
+
+
+def search(request):
+    
+    if request.method =="POST":
+        q = request.POST['q']
+        fail = util.get_entry(q)
+        if fail == None:
+            return HttpResponse("Sorry, this page does Not Exist")
+        else:          
+            return render(request,"encyclopedia/entry.html", {
+            "titles": util.get_entry(q),
+            })
+    else:
+        query = request.GET.get('id') 
+        print(query)
+        return render(request,"encyclopedia/entry.html", {
+            "titles": util.get_entry(query),
+            })
+    
+         
+    
+    
+    
+    
+    def search(request):
+      
+    query = request.GET.get('q').upper() 
+    fail = util.get_entry(query)
+    print(query)
+    print(fail)
+    if fail == None:
+        return HttpResponse("Sorry, this page does Not Exist")
+    else:          
+        return render(request,"encyclopedia/entry.html", {
+        "titles": util.get_entry(query),
+        })
+
+    -->
